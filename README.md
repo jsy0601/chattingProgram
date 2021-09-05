@@ -2,7 +2,6 @@
 - 멘토: 정서연, 최선아
 - 멘티: 모정빈, 염재현
 
-https://earthy-walleye-835.notion.site/294cd5a069054d4caff3d302f876d052
 ---
 
 # 1주차
