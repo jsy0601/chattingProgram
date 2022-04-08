@@ -7,7 +7,7 @@
 
 # 1주차
 # 완성본
-
+![image](https://user-images.githubusercontent.com/70794506/162482075-60a2ab0b-13d9-4eaf-a877-031448607599.png)
 ## JAVA의 GUI 클래스 : Swing
 
 **GUI란?** 
@@ -198,7 +198,7 @@
 
 > 저번 시간에는 비밀번호 입력 칸을 JTextField를 이용하였습니다. 하지만 비밀번호를 입력할 시에는 아래 사진과 같이 입력하고 있는 글자가 안 보이게 하기 위해 JPasswordField를 사용합니다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4664678f-d14f-4f97-9cf9-640285e9823a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4664678f-d14f-4f97-9cf9-640285e9823a/Untitled.png)
+![image](https://user-images.githubusercontent.com/70794506/162482388-eb58a417-bd55-4478-9e90-806fdd95f316.png)
 
 ## 중복된 코드를 줄이기 위해 정리하기
 
@@ -365,7 +365,6 @@ f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 을 하면 윈도우창 종료
 - ✔ main 클래스에 movePage 메소드 만들기
     - ✨조건문 - swith문
 
-        ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ae971add-4436-4662-9400-12787e2e3110/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ae971add-4436-4662-9400-12787e2e3110/Untitled.png)
 
     ```java
     public static void movePage(int index) {
@@ -404,7 +403,7 @@ f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 을 하면 윈도우창 종료
 # 3주차
 - 오늘의 완성본
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac9d151c-c5e9-4614-9544-5d25057f5ad8/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac9d151c-c5e9-4614-9544-5d25057f5ad8/Untitled.png)
+![image](https://user-images.githubusercontent.com/70794506/162482508-42d439e4-bb44-4e19-bc87-4da3d0d44ea1.png)
 
 # `JoinPanel` 클래스 추가 구현
 
@@ -519,9 +518,7 @@ f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 을 하면 윈도우창 종료
     }
     ```
 
-- 완성
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7926643f-fae3-4af1-9d51-00756940a578/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7926643f-fae3-4af1-9d51-00756940a578/Untitled.png)
 
 # `MainPanel` 클래스 생성
 
@@ -669,20 +666,11 @@ bt_login.addActionListener(new ActionListener() {
 				/*System.out.println("로그인을 요청했습니다");*/
     }
 });
-```
-
-[최종 완성 코드 - MainPanel.class](https://www.notion.so/MainPanel-class-4f336d4c522245a291165303f0b6471f)
-
-[최종 완성 코드 - LoginPanel.class](https://www.notion.so/LoginPanel-class-5759bd18742c42349fdb2dce2ae6e25f)
-
-[최종 완성 코드 - JoinPanel](https://www.notion.so/JoinPanel-d0af175298a64a60a179842601a0d15b)
-
-[최종 완성 코드 - Main.class](https://www.notion.so/Main-class-6f1b49bf956743c08116e9e72fd26a3c)
 ---
 # 4주차
 - 오늘의 완성본
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9add0c99-aac3-413d-894e-3f6ef3c64538/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9add0c99-aac3-413d-894e-3f6ef3c64538/Untitled.png)
+![image](https://user-images.githubusercontent.com/70794506/162482735-34108ba1-1fb0-43e5-b3f3-99cd02ef785d.png)
 
 ## 환경설정 페이지 만들기
 
@@ -1064,7 +1052,7 @@ bt_login.addActionListener(new ActionListener() {
 # 5주차
 - 오늘의 완성본
 
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b340f269-a3e4-460c-baf1-759b5c308207/Untitled.png)
+![image](https://user-images.githubusercontent.com/70794506/162482802-961c00e6-9c04-4f2a-8e9b-799ff5a7e77d.png)
 
 ## 직렬화란?
 
