@@ -84,7 +84,6 @@
         }
     ```
 
-    [JFrame](https://www.notion.so/df8f3911c1d5414da6ec9ea21af22f97)
 
     ### 실습3
 
@@ -161,7 +160,6 @@
     ---
 
     - addActionListener 로 버튼을 눌렀을때 이벤트가 일어나도록 할것입니다
-    - 어려우니 일단은 무언가 활동이 일어난다는것만 아시고 넘어가셔도 좋습니다
     - 이벤트 내용(활동 내용) - "로그인을 요청했습니다" 라고 출력해보기
     - 이벤트 형식
 
@@ -173,10 +171,6 @@
                 }
                 });
     ```
-
-    - 출력 방법
-        - System.out.println("로그인을 요청했습니다");
-        - 자주 나오니 외워두시길 바랍니당
 
         ---
 
@@ -293,8 +287,6 @@ f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 을 하면 윈도우창 종료
 
     - 1주차 시간에 배웠던 JFrame 메서드 참고!
 
-        [JFrame](https://www.notion.so/5fea7f92e8da4e689f8ad50b2a44efe1)
-
 - ✔ main 클래스에 JoinPanel 클래스 호출하기
     - 전역변수 joinPage 선언
 
@@ -403,7 +395,7 @@ f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 을 하면 윈도우창 종료
 # 3주차
 - 오늘의 완성본
 
-![image](https://user-images.githubusercontent.com/70794506/162482508-42d439e4-bb44-4e19-bc87-4da3d0d44ea1.png)
+![image](https://user-images.githubusercontent.com/70794506/162483761-16e405ef-7bfd-4303-a14b-b22e83ad3e2f.png)
 
 # `JoinPanel` 클래스 추가 구현
 
@@ -669,8 +661,7 @@ bt_login.addActionListener(new ActionListener() {
 ---
 # 4주차
 - 오늘의 완성본
-
-![image](https://user-images.githubusercontent.com/70794506/162482735-34108ba1-1fb0-43e5-b3f3-99cd02ef785d.png)
+![image](https://user-images.githubusercontent.com/70794506/162483658-dd35f809-692e-4902-a4eb-3ea7c2fa8b72.png)
 
 ## 환경설정 페이지 만들기
 
@@ -762,38 +753,6 @@ bt_login.addActionListener(new ActionListener() {
     - Serializable은 구현의 목적이 아닌 마킹의 기능이 있는 인터페이스입니다.
     - 클래스가 [직렬화](https://techblog.woowahan.com/2550/)가 가능하도록 하는데 사용되므로 인스턴스의 저장이 필요한 클래스에 구현해 주어야 합니다.
 
-    ```java
-    public class SettingData implements Serializable {
-        private String server, port; // 서버와 포트 정보 선언
-
-    /* 기본 생성자 */
-        public SettingData() {
-            
-        }
-    /* 서버와 포트의 정보를 받아서 초기화하는 생성자 */
-        public SettingData(String ser, String po){
-            setServer(ser);
-    				setPort(po);
-        }
-    /* Getter, Setter */
-        public String getServer() {
-            return server;
-        }
-
-        public void setServer(String server) {
-            this.server = server;
-        }
-
-        public String getPort() {
-            return port;
-        }
-
-        public void setPort(String port) {
-            this.port = port;
-        }
-
-    }
-    ```
 
     **Getter/Setter (단축키: alt+insert)
     외부에서 꺼내서 쓰거나 외부에 있는 값을 입력할 수 있는 메소드**
@@ -801,130 +760,6 @@ bt_login.addActionListener(new ActionListener() {
     정보를 바꾸는 메소드를 Setter 라고 부른답니다.
 
 - 저장 버튼 이벤트 추가하기
-
-    ```java
-    bt_save.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-    								// 입력 받은 서버와 포트값 받아와서 출력하기
-                    System.out.println("SERVER : "+server.getText()+", PORT: "+port.getText());
-    								
-    								// 입력값이 없을 때 팝업창 띄우기
-                    if(server.getText().equals("")){
-                        JOptionPane.showMessageDialog(Main.f,"서버 정보가 입력되지 않았습니다.");
-                        return;  // 더이상 밑의 내용 진행X (저장X)
-                    }
-                    if(port.getText().equals("")){
-                        JOptionPane.showMessageDialog(Main.f,"포트 정보가 입력되지 않았습니다.");
-                        return;
-                    }
-                    [try](https://www.notion.so/4-665b0d8c701f4e2084af659add5455a7) {
-    										// 정상적으로 값이 들어오면 서버 정보와 포트 정보를 한번에 넣는 SettingData 객체 만들기(객체화) 
-                        SettingData data;
-                        data = new SettingData(server.getText(), port.getText());
-    										
-    										// 파일에 저장
-                        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("d://settingData.txt"));
-                        String [write_value](https://www.notion.so/4-665b0d8c701f4e2084af659add5455a7) = "ws://" + data.getServer() + ":" + data.getPort();
-    										out.writeObject(write_value);
-                        out.close();
-
-                        FileInputStream fis = new FileInputStream("d://settingData.txt");
-                        ObjectInputStream in = new ObjectInputStream(fis);
-                        in.readObject();
-                        in.close();
-                    }catch (Exception ex){
-                        ex.printStackTrace();  // 에러 메세지의 발생 근원지를 찾아서 단계별로 에러를 출력한다.
-                        JOptionPane.showMessageDialog(Main.f,"파일이 정상적으로 생성되지 않았습니다.");
-                        return;
-                    }
-                    Main.movePage(1);
-                }
-            });
-    ```
-
-    **try-catch문
-    try{
-        예외 발생 가능 코드
-    } catch(예외클래스 e) {
-        예외 처리
-    } finally {
-        항상 실행
-    }**
-
-    그럼, D드라이브에 만들어진 파일을 확인해 봅시다.
-
-- private void setView() 완성 한번에 보기
-
-    ```java
-    private void setView() {
-       
-         JLabel label_server = new JLabel("SERVER");
-            label_server.setBounds(120,100,60,30);
-            add(label_server);
-            server = new JTextField();
-            server.setBounds(180,100,200,30);
-            add(server);
-            JLabel label_port = new JLabel("PORT");
-            label_port.setBounds(120,150,60,30);
-            add(label_port);
-            port = new JTextField();
-            port.setBounds(180,150,200,30);
-            add(port);
-
-            JButton bt_save = new JButton("저장");
-            bt_save.setBounds(120,220,260,30);
-            bt_save.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("SERVER : "+server.getText()+", PORT: "+port.getText());
-
-                    if(server.getText().equals("")){
-                        JOptionPane.showMessageDialog(Main.f,"서버 정보가 입력되지 않았습니다.");
-                        return;
-                    }
-                    if(port.getText().equals("")){
-                        JOptionPane.showMessageDialog(Main.f,"포트 정보가 입력되지 않았습니다.");
-                        return;
-                    }
-                    try {
-                        SettingData data;
-                        data = new SettingData(server.getText(), port.getText());
-
-    										/*파일 쓰기 시작*/
-                        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("d://settingData.txt"));
-                        String write_value = "ws://" + data.getServer() + ":" + data.getPort();
-    										out.writeObject(write_value);
-                        out.close();
-    										/*파일 쓰기 끝*/
-
-    										/*파일읽기_start*/
-                        FileInputStream fis = new FileInputStream("d://settingData.txt");
-                        ObjectInputStream in = new ObjectInputStream(fis);
-                        in.readObject();
-                        in.close();
-    										/*파일읽기_end*/
-
-                    }catch (Exception ex){
-                        ex.printStackTrace();
-                        JOptionPane.showMessageDialog(Main.f,"파일이 정상적으로 생성되지 않았습니다.");
-                        return;
-                    }
-                    Main.movePage(1);
-                }
-            });
-            add(bt_save);
-            JButton bt_back = new JButton("취소");
-            bt_back.setBounds(120,260,260,30);
-            bt_back.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Main.movePage(1);
-                }
-            });
-            add(bt_back);
-        }
-    ```
 
 ---
 
@@ -957,66 +792,6 @@ bt_login.addActionListener(new ActionListener() {
     	break;
     ```
 
-### Main 최종 완성 코드
-
-- 한번에 보기
-
-    ```jsx
-    public class Main {
-
-        public static JFrame f;
-        private static LoginPanel loginPage;
-        private static MainPanel mainPage;
-        private static JoinPanel joinPage;
-        private static SettingPanel settingPage;
-     
-    public static void main(String[] args) {
-            f = new JFrame();
-
-            loginPage = new LoginPanel();
-            f.add(loginPage);
-            mainPage = new MainPanel();
-            f.add(mainPage);
-            joinPage = new JoinPanel();
-            f.add(joinPage);
-            settingPage = new SettingPanel();
-            f.add(settingPage);
-
-            f.setSize(500, 500);
-            f.setLayout(null);
-            f.setVisible(true);
-
-            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-            movePage(1);
-        }
-
-        public static void movePage(int index) {
-            loginPage.setVisible(false);
-            mainPage.setVisible(false);
-            joinPage.setVisible(false);
-            settingPage.setVisible(false);
-
-            switch (index) {
-                case 1:
-                    f.setTitle("Chat - 로그인 화면");
-                    loginPage.setVisible(true);
-                    break;
-                case 2:
-                    f.setTitle("Chat - 체팅 화면");
-                    mainPage.setVisible(true);
-                    break;
-                case 3:
-                    f.setTitle("Chat - 회원가입 화면");
-                    joinPage.setVisible(true);
-                    break;
-                case 4:
-                    f.setTitle("Chat - 환경설정 화면");
-                    settingPage.setVisible(true);
-                    break;
-            }
-    }
-    ```
 
 ---
 
@@ -1034,29 +809,11 @@ bt_login.addActionListener(new ActionListener() {
 - `wss://echo.websocket.org:443`
 
 ---
-
-마지막으로 3주차에 숙제 잊지 마세용 ‼️
-
----
-
-[최종 완성본 - LoginPanel](https://www.notion.so/LoginPanel-59999258bc7f4de9a4fd3566b64ddaa8)
-
-[최종 완성본 - JoinPanel](https://www.notion.so/JoinPanel-2da44605da774107a80420e65bc1f678)
-
-[최종 완성본 - MainPanel](https://www.notion.so/MainPanel-738d5ed879324787983f412629462f23)
-
-[최종 완성본 - Main.class](https://www.notion.so/Main-class-de15f8cf4f044f10ab263e10e2727031)
-
-[최종 완성본 - SettingPanel](https://www.notion.so/SettingPanel-0e7c3f9d71e242db9558e75359402a31)
----
 # 5주차
 - 오늘의 완성본
 
-![image](https://user-images.githubusercontent.com/70794506/162482802-961c00e6-9c04-4f2a-8e9b-799ff5a7e77d.png)
+![image](https://user-images.githubusercontent.com/70794506/162483425-b4058bff-46d8-4fcb-97a9-3ad2b2bd964e.png)
 
-## 직렬화란?
-
-[간단한 설명](https://www.notion.so/7e0e5fcde44645e09264c260af636c08)
 
 ---
 
@@ -1112,10 +869,6 @@ bt_login.addActionListener(new ActionListener() {
 
     - 3️⃣ setting 판넬로 이동합니다
         1. 파일에서 원하는 문자열을 추출하도록 구현합니다
-            - 사전 설명
-
-                [`substring`, `indexOf` 설명](https://www.notion.so/substring-indexOf-093ac4f0a0b04187ae4430936364054a)
-
             - 추출 과정
                 1. readObject() 는 반환형이 Object 입니다
                 2. toString을 사용하여 문자열 변수에 담아둡니다
@@ -1162,10 +915,6 @@ bt_login.addActionListener(new ActionListener() {
 
          `URI` 객체 안에 `URI` 변수를 소환합니다
 
-        [WebSocetClient - Override](https://www.notion.so/WebSocetClient-Override-83c6ed19711c4da5be198dbd6c5c315f)
-
-        [sendMessage() 구현](https://www.notion.so/sendMessage-91cd6786bfd848f4a7ac37711f3f49e5)
-
 ---
 
 ## `settingPanel`을 통해 테스트 해봅시다!
@@ -1188,11 +937,6 @@ bt_login.addActionListener(new ActionListener() {
         String write_value = "ws://" + data.getServer() + ":"; //+ data.getPort();
         ```
 
----
-
-— 해당 도메인을 얻을 수 있는 테스트 사이트 입니다
-
-[https://www.piesocket.com/websocket-tester#](https://www.piesocket.com/websocket-tester#)
 
 ---
 
@@ -1209,7 +953,5 @@ bt_login.addActionListener(new ActionListener() {
     ---
 
     로그인 액션 버튼에 파일 읽는 부분을 추가해줍시다
-
-    try{ Ctrl+c v 으하하ㅏ}catch(){ 야바다브라드바다 } 
 
 # 끝
